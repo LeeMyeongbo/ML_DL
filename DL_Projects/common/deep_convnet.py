@@ -105,7 +105,8 @@ class DeepConvNet:
 
 
     def gradient(self, x, t):
-        self.loss(x, t)             # forward
+        # forward
+        self.loss(x, t)
 
         # backward
         dout = 1
