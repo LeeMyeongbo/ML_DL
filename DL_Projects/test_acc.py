@@ -13,9 +13,11 @@ import matplotlib.pyplot as plt
 from common.deep_convnet import DeepConvNet
 from datapreparation import load_data
 
+epochs=10
+learning_rate='0,001'
 x_train, t_train, x_val, t_val, x_test, t_test = load_data()
 network = DeepConvNet()
-network.load_params("deep_convnet_params.pkl")
+network.load_params('epoch=' + str(epochs) + ', lr=' + learning_rate + '.pkl')
 
 print("calculating test accuracy ... ")
 
@@ -51,5 +53,5 @@ for i, val in enumerate(classified_ids == t_test):
         current_view += 1
 
 print("======= misclassified result =======")
-print("{view index: (label, inference), ...}")
+print("{view index: (label, inference), ...} (0:benign, 1:malignant)")
 print(mis_pairs)
