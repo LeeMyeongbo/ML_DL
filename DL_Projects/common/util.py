@@ -1,11 +1,4 @@
 # coding: utf-8
-"""
-ID: 20210910
-NAME: Python Programming Review
-OS: Ubuntu 18.10
-Python version: 3.6.9
-"""
-
 import numpy as np
 
 
@@ -24,6 +17,7 @@ def shuffle_dataset(x, t):          # shuffle the data (x : train data, t : answ
     t = t[permutation]
 
     return x, t
+
 
 def conv_output_size(input_size, filter_size, stride=1, pad=0):
     return (input_size + 2*pad - filter_size) / stride + 1

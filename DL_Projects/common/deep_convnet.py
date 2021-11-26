@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-ID: 20210910
-NAME: Python Programming Review
-OS: Ubuntu 18.10
-Python version: 3.6.9
-"""
-
 import sys, os
 sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
 import pickle
@@ -14,8 +7,7 @@ import common.layers as lyrs
 
 
 class DeepConvNet:
-    """정확도 99% 이상의 고정밀 합성곱 신경망
-
+    """
     네트워크 구성은 아래와 같음
         conv - relu - conv- relu - pool -
         conv - relu - conv- relu - pool -
@@ -30,7 +22,7 @@ class DeepConvNet:
                  conv_param_5 = {'filter_num':64, 'filter_size':3, 'pad':1, 'stride':1},
                  conv_param_6 = {'filter_num':64, 'filter_size':3, 'pad':1, 'stride':1},
                  hidden_size=500, output_size=2):
-        # 가중치 초기화===========
+        
         # 각 층의 뉴런 하나당 앞 층의 몇 개 뉴런과 연결되는가（TODO: 자동 계산되게 바꿀 것）
         pre_node_nums = np.array([3*3*3, 16*3*3, 16*3*3, 32*3*3, 32*3*3, 64*3*3, 64*28*28, hidden_size])
         wight_init_scales = np.sqrt(2.0 / pre_node_nums)  # ReLU를 사용할 때의 권장 초깃값
@@ -46,7 +38,7 @@ class DeepConvNet:
         self.params['W8'] = wight_init_scales[7] * np.random.randn(hidden_size, output_size)
         self.params['b8'] = np.zeros(output_size)
 
-        # 계층 생성===========
+        # ========== 계층 생성 ==========
         self.layers = []
         self.layers.append(lyrs.Convolution(self.params['W1'], self.params['b1'], conv_param_1['stride'], conv_param_1['pad']))
         self.layers.append(lyrs.Relu())
@@ -74,6 +66,7 @@ class DeepConvNet:
         
         self.last_layer = lyrs.SoftmaxWithLoss()
 
+
     def predict(self, x, train_flg=False):
         for layer in self.layers:
             if isinstance(layer, lyrs.Dropout):
@@ -82,12 +75,15 @@ class DeepConvNet:
                 x = layer.forward(x)
         return x
 
+
     def loss(self, x, t):
         y = self.predict(x, train_flg=True)
         return self.last_layer.forward(y, t)
 
+
     def accuracy(self, x, t, batch_size):
-        if t.ndim != 1 : t = np.argmax(t, axis=1)
+        if t.ndim != 1: 
+            t = np.argmax(t, axis=1)
 
         acc = 0.0
 
@@ -107,9 +103,9 @@ class DeepConvNet:
 
         return acc / x.shape[0]
 
+
     def gradient(self, x, t):
-        # forward
-        self.loss(x, t)
+        self.loss(x, t)             # forward
 
         # backward
         dout = 1
@@ -128,12 +124,14 @@ class DeepConvNet:
 
         return grads
 
+
     def save_params(self, file_name="params.pkl"):
         params = {}
         for key, val in self.params.items():
             params[key] = val
         with open(file_name, 'wb') as f:
             pickle.dump(params, f)
+
 
     def load_params(self, file_name="params.pkl"):
         with open(file_name, 'rb') as f:

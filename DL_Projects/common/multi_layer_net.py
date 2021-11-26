@@ -47,6 +47,7 @@ class MultiLayerNet:
 
         self.last_layer = SoftmaxWithLoss()
 
+
     def __init_weight(self, weight_init_std):
         """가중치 초기화
         
@@ -66,24 +67,15 @@ class MultiLayerNet:
             self.params['W' + str(idx)] = scale * np.random.randn(all_size_list[idx-1], all_size_list[idx])
             self.params['b' + str(idx)] = np.zeros(all_size_list[idx])
 
+
     def predict(self, x):
         for layer in self.layers.values():
             x = layer.forward(x)
 
         return x
 
+
     def loss(self, x, t):
-        """손실 함수를 구한다.
-        
-        Parameters
-        ----------
-        x : 입력 데이터
-        t : 정답 레이블 
-        
-        Returns
-        -------
-        손실 함수의 값
-        """
         y = self.predict(x)
 
         weight_decay = 0
@@ -93,28 +85,18 @@ class MultiLayerNet:
 
         return self.last_layer.forward(y, t) + weight_decay
 
+
     def accuracy(self, x, t):
         y = self.predict(x)
         y = np.argmax(y, axis=1)
-        if t.ndim != 1 : t = np.argmax(t, axis=1)
+        if t.ndim != 1 :
+            t = np.argmax(t, axis=1)
 
         accuracy = np.sum(y == t) / float(x.shape[0])
         return accuracy
 
+
     def numerical_gradient(self, x, t):
-        """기울기를 구한다(수치 미분).
-        
-        Parameters
-        ----------
-        x : 입력 데이터
-        t : 정답 레이블
-        
-        Returns
-        -------
-        각 층의 기울기를 담은 딕셔너리(dictionary) 변수
-            grads['W1']、grads['W2']、... 각 층의 가중치
-            grads['b1']、grads['b2']、... 각 층의 편향
-        """
         loss_W = lambda W: self.loss(x, t)
 
         grads = {}
@@ -124,20 +106,8 @@ class MultiLayerNet:
 
         return grads
 
-    def gradient(self, x, t):
-        """기울기를 구한다(오차역전파법).
 
-        Parameters
-        ----------
-        x : 입력 데이터
-        t : 정답 레이블
-        
-        Returns
-        -------
-        각 층의 기울기를 담은 딕셔너리(dictionary) 변수
-            grads['W1']、grads['W2']、... 각 층의 가중치
-            grads['b1']、grads['b2']、... 각 층의 편향
-        """
+    def gradient(self, x, t):
         # forward
         self.loss(x, t)
 

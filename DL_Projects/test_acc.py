@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-ID: 20210910
-NAME: Python Programming Review
+ID: 2017113888
+NAME: Lee Myeongbo
 OS: Ubuntu 18.10
-Python version: 3.6.9
+Python version: 3.8.1
 """
 
 import sys, os
