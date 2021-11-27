@@ -3,7 +3,7 @@
 ID: 2017113888
 NAME: Lee Myeongbo
 OS: Ubuntu 18.10
-Python version: 3.8.1
+Python version: 3.8.12
 """
 
 import sys, os

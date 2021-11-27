@@ -3,7 +3,7 @@
 ID: 2017113888
 NAME: Lee Myeongbo
 OS: Ubuntu 18.10
-Python version: 3.8.1
+Python version: 3.8.12
 """
 
 import sys, os
@@ -14,7 +14,7 @@ from common.deep_convnet import DeepConvNet
 from datapreparation import load_data
 
 epochs=10
-learning_rate='0,001'
+learning_rate='0_001'       # epochs와 learning_rate는 원하는 대로 변경 가능
 x_train, t_train, x_val, t_val, x_test, t_test = load_data()
 network = DeepConvNet()
 network.load_params('epoch=' + str(epochs) + ', lr=' + learning_rate + '.pkl')

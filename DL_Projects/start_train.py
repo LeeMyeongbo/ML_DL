@@ -3,7 +3,7 @@
 ID: 2017113888
 NAME: Lee Myeongbo
 OS: Ubuntu 18.10
-Python version: 3.8.1
+Python version: 3.8.12
 """
 
 import sys, os
@@ -13,15 +13,19 @@ from common.deep_convnet import DeepConvNet
 from common.trainer import Trainer
 from datapreparation import load_data
 
+epochs = 5
+learning_rate = 0.001
 start = time.time()
 x_train, t_train, x_val, t_val, x_test, t_test = load_data()
 network = DeepConvNet()
-trainer = Trainer(network, x_train, t_train, x_val, t_val, x_test, t_test, epochs=1, batch_size=30, iter_samples=30, 
-                  optimizer='Adam', param={'lr':0.001})
-
+trainer = Trainer(network, x_train, t_train, x_val, t_val, x_test, t_test, epochs, batch_size=60, val_batch_size=70, 
+                  optimizer='Adam', param={'lr':learning_rate})
 trainer.train()
 
 # 매개변수 보관
-network.save_params("deep_convnet_params.pkl")
+lr = str(learning_rate).replace('.', '_')
+network.save_params('epoch=' + str(epochs) + ', lr=' + lr + '.pkl')
 print("Saved Network Parameters!")
-print("time :", time.time() - start)
+
+t = time.time() - start
+print(" elapsed time : {0}h {1}m {2}s".format(int(t // 3600), int(t % 3600 // 60), int(t % 3600 % 60)))
