@@ -15,16 +15,16 @@ class DeepConvNet:
         affine - relu - dropout - affine - dropout - softmax
     """
     def __init__(self, input_dim=(3, 224, 224),
-                 conv_param_1 = {'filter_num':8, 'filter_size':3, 'pad':1, 'stride':1},
-                 conv_param_2 = {'filter_num':8, 'filter_size':3, 'pad':1, 'stride':1},
-                 conv_param_3 = {'filter_num':16, 'filter_size':3, 'pad':1, 'stride':1},
-                 conv_param_4 = {'filter_num':16, 'filter_size':3, 'pad':1, 'stride':1},
-                 conv_param_5 = {'filter_num':32, 'filter_size':3, 'pad':1, 'stride':1},
-                 conv_param_6 = {'filter_num':32, 'filter_size':3, 'pad':1, 'stride':1},
-                 hidden_size=10, output_size=2):
+                 conv_param_1 = {'filter_num':16, 'filter_size':3, 'pad':1, 'stride':1},
+                 conv_param_2 = {'filter_num':16, 'filter_size':3, 'pad':1, 'stride':1},
+                 conv_param_3 = {'filter_num':32, 'filter_size':3, 'pad':1, 'stride':1},
+                 conv_param_4 = {'filter_num':32, 'filter_size':3, 'pad':1, 'stride':1},
+                 conv_param_5 = {'filter_num':64, 'filter_size':3, 'pad':1, 'stride':1},
+                 conv_param_6 = {'filter_num':64, 'filter_size':3, 'pad':1, 'stride':1},
+                 hidden_size=50, output_size=2):
         
         # 각 층의 뉴런 하나당 앞 층의 몇 개 뉴런과 연결되는가（TODO: 자동 계산되게 바꿀 것）
-        pre_node_nums = np.array([3*3*3, 8*3*3, 8*3*3, 16*3*3, 16*3*3, 32*3*3, 32*28*28, hidden_size])
+        pre_node_nums = np.array([3*3*3, 16*3*3, 16*3*3, 32*3*3, 32*3*3, 64*3*3, 64*28*28, hidden_size])
         wight_init_scales = np.sqrt(2.0 / pre_node_nums)  # ReLU를 사용할 때의 권장 초깃값
         
         self.params = {}
@@ -33,7 +33,7 @@ class DeepConvNet:
             self.params['W' + str(idx+1)] = wight_init_scales[idx] * np.random.randn(conv_param['filter_num'], pre_channel_num, conv_param['filter_size'], conv_param['filter_size'])
             self.params['b' + str(idx+1)] = np.zeros(conv_param['filter_num'])
             pre_channel_num = conv_param['filter_num']
-        self.params['W7'] = wight_init_scales[6] * np.random.randn(32*28*28, hidden_size)
+        self.params['W7'] = wight_init_scales[6] * np.random.randn(64*28*28, hidden_size)
         self.params['b7'] = np.zeros(hidden_size)
         self.params['W8'] = wight_init_scales[7] * np.random.randn(hidden_size, output_size)
         self.params['b8'] = np.zeros(output_size)
@@ -81,7 +81,7 @@ class DeepConvNet:
         return self.last_layer.forward(y, t)
 
 
-    def accuracy(self, x, t, batch_size):
+    def accuracy(self, x, t, batch_size=20):
         if t.ndim != 1: 
             t = np.argmax(t, axis=1)
 

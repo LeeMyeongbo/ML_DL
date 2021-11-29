@@ -13,12 +13,12 @@ from common.deep_convnet import DeepConvNet
 from common.trainer import Trainer
 from datapreparation import load_data
 
-epochs = 5
+epochs = 10
 learning_rate = 0.001
 start = time.time()
-x_train, t_train, x_val, t_val, x_test, t_test = load_data()
+x_train, t_train, x_test, t_test = load_data()
 network = DeepConvNet()
-trainer = Trainer(network, x_train, t_train, x_val, t_val, x_test, t_test, epochs, batch_size=60, val_batch_size=70, 
+trainer = Trainer(network, x_train, t_train, x_test, t_test, epochs, batch_size=39, eval_size=30, 
                   optimizer='Adam', param={'lr':learning_rate})
 trainer.train()
 
@@ -28,4 +28,4 @@ network.save_params('epoch=' + str(epochs) + ', lr=' + lr + '.pkl')
 print("Saved Network Parameters!")
 
 t = time.time() - start
-print(" elapsed time : {0}h {1}m {2}s".format(int(t // 3600), int(t % 3600 // 60), int(t % 3600 % 60)))
+print("elapsed time : {0}h {1}m {2}s".format(int(t // 3600), int(t % 3600 // 60), int(t % 3600 % 60)))

@@ -15,7 +15,7 @@ from datapreparation import load_data
 
 epochs=10
 learning_rate='0_001'       # epochs와 learning_rate는 원하는 대로 변경 가능
-x_train, t_train, x_val, t_val, x_test, t_test = load_data()
+x_train, t_train, x_test, t_test = load_data()
 network = DeepConvNet()
 network.load_params('epoch=' + str(epochs) + ', lr=' + learning_rate + '.pkl')
 
@@ -23,7 +23,7 @@ print("calculating test accuracy ... ")
 
 classified_ids = []
 acc = 0.0
-batch_size = 20
+batch_size = 25
 
 for i in range(int(x_test.shape[0] / batch_size)):
     tx = x_test[i*batch_size:(i+1)*batch_size]
