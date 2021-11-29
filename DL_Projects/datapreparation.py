@@ -13,10 +13,10 @@ import PIL.Image as Image
 from urllib.request import urlretrieve
 from zipfile import ZipFile
 
-train_bpath = 'skin-cancer-malignant-vs-benign/data/train/benign/'
-train_mpath = 'skin-cancer-malignant-vs-benign/data/train/malignant/'
-test_bpath = 'skin-cancer-malignant-vs-benign/data/test/benign/'
-test_mpath = 'skin-cancer-malignant-vs-benign/data/test/malignant/'
+train_bpath = 'SCDataset/train/benign/'
+train_mpath = 'SCDataset/train/malignant/'
+test_bpath = 'SCDataset/test/benign/'
+test_mpath = 'SCDataset/test/malignant/'
 
 
 def prepare(path, imgs, label, size):
@@ -34,7 +34,7 @@ def prepare(path, imgs, label, size):
 
 
 def load_data():
-    if not os.path.exists('skin-cancer-malignant-vs-benign'):
+    if not os.path.exists('SCDataset'):
         urlretrieve('https://media.githubusercontent.com/media/LeeMyeongbo/Datasets/main/SCDataset.zip', 'SCDataset.zip')
         with ZipFile('SCDataset.zip', 'r') as z:
             z.printdir()
