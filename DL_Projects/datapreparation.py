@@ -23,12 +23,23 @@ def prepare(path, imgs, label, size):
     x = np.empty(shape=(size, 3, 224, 224))
     t = np.empty(shape=(size,)).astype(int)
     
-    for i in range(size):
+    for i in range(len(imgs)):
         img = Image.open(path + imgs[i])
         img_array = np.array(img).transpose((2,0,1))
         x[i] = img_array
         t[i] = label
     
+    # data argumentation -- 원래 input data set에 변형을 가해서 데이터 추가
+    rotated_img_index = np.random.choice(len(imgs), size - len(imgs), replace=False)    # (size-원래 이미지 수)만큼의 데이터 추가
+    for i in range(size - len(imgs)):
+        img = Image.open(path + imgs[rotated_img_index[i]])
+        degree = 90 * np.random.randint(1, 4)                                           # 90, 180, 270 중 택 1
+        r_img = img.rotate(degree)                                                      # 선택한 각도만큼 돌림
+        r_img.save(path + 'r_' + imgs[rotated_img_index[i]])                            # 돌린 이미지 저장
+        img_array = np.array(r_img).transpose((2,0,1))
+        x[len(imgs) + i] = img_array
+        t[len(imgs) + i] = label
+        
     x /= 255.0
     return (x, t)
 
@@ -45,8 +56,8 @@ def load_data():
     test_bimgs = os.listdir(test_bpath)
     test_mimgs = os.listdir(test_mpath)
     
-    (x_btrain, t_btrain) = prepare(train_bpath, train_bimgs, 0, len(train_bimgs))
-    (x_mtrain, t_mtrain) = prepare(train_mpath, train_mimgs, 1, len(train_mimgs))
+    (x_btrain, t_btrain) = prepare(train_bpath, train_bimgs, 0, 450)
+    (x_mtrain, t_mtrain) = prepare(train_mpath, train_mimgs, 1, 450)
     (x_btest, t_btest) = prepare(test_bpath, test_bimgs, 0, len(test_bimgs))
     (x_mtest, t_mtest) = prepare(test_mpath, test_mimgs, 1, len(test_mimgs))
     

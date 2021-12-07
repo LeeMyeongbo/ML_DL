@@ -1,134 +1,89 @@
 ================== epoch 1 ==================
-epoch 1-1 completed
-epoch 1-2 completed
-epoch 1-3 completed
-epoch 1-4 completed
-epoch 1-5 completed
-epoch 1-6 completed
-epoch 1-7 completed
-epoch 1-8 completed
-epoch 1-9 completed
-epoch 1-10 completed
-epoch 1-11 completed
-epoch 1-12 completed
-epoch 1-13 completed
-epoch 1-14 completed
-epoch 1-15 completed
-epoch 1-16 completed
-epoch 1-17 completed
-epoch 1-18 completed
-epoch 1-19 completed
-epoch 1-20 completed
-epoch 1-21 completed
+1: train_loss=1.243224881698445
+2: train_loss=1.1973870472625305
+3: train_loss=0.7348447162189458
+4: train_loss=0.7284371238032608
+5: train_loss=0.6849622446035555
+6: train_loss=0.7153026230897849
+7: train_loss=0.693552138975593
+8: train_loss=0.701573613973302
+9: train_loss=0.6325312420770807
+10: train_loss=0.5752417651157834
+11: train_loss=0.5119391949214597
+12: train_loss=0.5879908066555428
+13: train_loss=0.5263045982356374
 
-train_loss:0.7002742848000221, train_acc:0.5230158730158729
-val_loss:0.6864064761221333, val_acc:0.4642857142857143
+evaluation 1: train_loss=0.733330153586994, test_loss=0.4680396196870568, test_acc=0.9
 
 ================== epoch 2 ==================
-epoch 2-1 completed
-epoch 2-2 completed
-epoch 2-3 completed
-epoch 2-4 completed
-epoch 2-5 completed
-epoch 2-6 completed
-epoch 2-7 completed
-epoch 2-8 completed
-epoch 2-9 completed
-epoch 2-10 completed
-epoch 2-11 completed
-epoch 2-12 completed
-epoch 2-13 completed
-epoch 2-14 completed
-epoch 2-15 completed
-epoch 2-16 completed
-epoch 2-17 completed
-epoch 2-18 completed
-epoch 2-19 completed
-epoch 2-20 completed
-epoch 2-21 completed
+1: train_loss=0.5566845306635888
+2: train_loss=0.48753193463847044
+3: train_loss=0.5713883266139563
+4: train_loss=0.7587740376902676
+5: train_loss=0.48102557446984423
+6: train_loss=0.47233799405671373
+7: train_loss=0.54313258443205
+8: train_loss=0.5563277690352938
+9: train_loss=0.5931420375993478
+10: train_loss=0.6178336909774179
+11: train_loss=0.6062141485023683
+12: train_loss=0.5024921787641943
+13: train_loss=0.6489790069204594
 
-train_loss:0.6781901762568419, train_acc:0.634920634920635
-val_loss:0.6958700696197484, val_acc:0.6000000000000001
+evaluation 2: train_loss=0.5689126011049209, test_loss=0.47411087052566, test_acc=0.9333333333333333
 
 ================== epoch 3 ==================
-epoch 3-1 completed
-epoch 3-2 completed
-epoch 3-3 completed
-epoch 3-4 completed
-epoch 3-5 completed
-epoch 3-6 completed
-epoch 3-7 completed
-epoch 3-8 completed
-epoch 3-9 completed
-epoch 3-10 completed
-epoch 3-11 completed
-epoch 3-12 completed
-epoch 3-13 completed
-epoch 3-14 completed
-epoch 3-15 completed
-epoch 3-16 completed
-epoch 3-17 completed
-epoch 3-18 completed
-epoch 3-19 completed
-epoch 3-20 completed
-epoch 3-21 completed
+1: train_loss=0.4921254192422866
+2: train_loss=0.584385888591403
+3: train_loss=0.48257873372243226
+4: train_loss=0.49878233571478175
+5: train_loss=0.4501917745107195
+6: train_loss=0.5070107136654272
+7: train_loss=0.3741463172874791
+8: train_loss=0.3752755997345398
+9: train_loss=0.4157619374043607
+10: train_loss=0.44401045824881963
+11: train_loss=0.4248652299634141
+12: train_loss=0.4809258771051535
+13: train_loss=0.3432143371063891
 
-train_loss:0.6621587931524593, train_acc:0.6976190476190477
-val_loss:0.6163410404310883, val_acc:0.8285714285714285
+evaluation 3: train_loss=0.4517903555613235, test_loss=0.4083117402845239, test_acc=0.8666666666666667
 
 ================== epoch 4 ==================
-epoch 4-1 completed
-epoch 4-2 completed
-epoch 4-3 completed
-epoch 4-4 completed
-epoch 4-5 completed
-epoch 4-6 completed
-epoch 4-7 completed
-epoch 4-8 completed
-epoch 4-9 completed
-epoch 4-10 completed
-epoch 4-11 completed
-epoch 4-12 completed
-epoch 4-13 completed
-epoch 4-14 completed
-epoch 4-15 completed
-epoch 4-16 completed
-epoch 4-17 completed
-epoch 4-18 completed
-epoch 4-19 completed
-epoch 4-20 completed
-epoch 4-21 completed
+1: train_loss=0.35609372168509995
+2: train_loss=0.4187275718660589
+3: train_loss=0.39619647295898375
+4: train_loss=0.3102761680546934
+5: train_loss=0.4004236714645386
+6: train_loss=0.6160464756678548
+7: train_loss=0.6269048694066606
+8: train_loss=0.4804812858239676
+9: train_loss=0.5531260530847745
+10: train_loss=0.39480725013417994
+11: train_loss=0.36422570451180913
+12: train_loss=0.6012957225372857
+13: train_loss=0.5459946949540447
 
-train_loss:0.6274852428300693, train_acc:0.7603174603174604
-val_loss:0.5933762730260344, val_acc:0.7714285714285715
+evaluation 4: train_loss=0.4665076663192271, test_loss=0.3955457357800333, test_acc=0.7666666666666667
 
 ================== epoch 5 ==================
-epoch 5-1 completed
-epoch 5-2 completed
-epoch 5-3 completed
-epoch 5-4 completed
-epoch 5-5 completed
-epoch 5-6 completed
-epoch 5-7 completed
-epoch 5-8 completed
-epoch 5-9 completed
-epoch 5-10 completed
-epoch 5-11 completed
-epoch 5-12 completed
-epoch 5-13 completed
-epoch 5-14 completed
-epoch 5-15 completed
-epoch 5-16 completed
-epoch 5-17 completed
-epoch 5-18 completed
-epoch 5-19 completed
-epoch 5-20 completed
-epoch 5-21 completed
+1: train_loss=0.6542040067990451
+2: train_loss=0.548286028992474
+3: train_loss=0.5060783971142144
+4: train_loss=0.5862335011078731
+5: train_loss=0.6053533708732104
+6: train_loss=0.543263630940205
+7: train_loss=0.5550014783287617
+8: train_loss=0.558998780483292
+9: train_loss=0.5441910210698329
+10: train_loss=0.41546152447896706
+11: train_loss=0.3830439395301766
+12: train_loss=0.37835088757233587
+13: train_loss=0.4120903731946897
 
-train_loss:0.5856883679170861, train_acc:0.7857142857142856
-val_loss:0.6676206761797103, val_acc:0.75
+evaluation 5: train_loss=0.5146582261911599, test_loss=0.372894534076482, test_acc=0.9
 
 ================== Final Test Accuracy ==================
-test_acc:0.74
+test_acc:0.92
 Saved Network Parameters!
- elapsed time : 1h 35m 25s
+elapsed time : 1h 18m 31s

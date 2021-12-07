@@ -18,7 +18,7 @@ learning_rate = 0.001
 start = time.time()
 x_train, t_train, x_test, t_test = load_data()
 network = DeepConvNet()
-trainer = Trainer(network, x_train, t_train, x_test, t_test, epochs, batch_size=39, eval_size=30, 
+trainer = Trainer(network, x_train, t_train, x_test, t_test, epochs, batch_size=30, eval_size=30, 
                   optimizer='Adam', param={'lr':learning_rate})
 trainer.train()
 

@@ -70,7 +70,7 @@ class Trainer:              # 신경망 훈련 시킴
         plt.xlabel('epochs')
         plt.xticks(np.arange(1, self.epochs + 1))
         plt.plot(np.arange(1, self.epochs + 1), self.train_loss_list, 'b', label='train_loss', linewidth=0.5)
-        plt.plot(np.arange(1, self.epochs + 1), self.train_acc_list, 'b', label='train_acc', linewidth=0.5)
+        plt.plot(np.arange(1, self.epochs + 1), self.train_acc_list, 'y', label='train_acc', linewidth=0.5)
         plt.plot(np.arange(1, self.epochs + 1), self.test_loss_list, 'g', label='test_loss', linewidth=0.5)
         plt.plot(np.arange(1, self.epochs + 1), self.test_acc_list, 'r', label='test_acc', linewidth=0.5)
         plt.legend(loc=(0, 1.01), fontsize=8, ncol=4)
