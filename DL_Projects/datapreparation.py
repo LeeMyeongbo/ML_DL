@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+
+# =========================== 이미지 데이터를 다운로드 받고 전처리한 다음 배열에 저장합니다. ===========================
 """
 ID: 2017113888
 NAME: Lee Myeongbo
@@ -29,7 +30,7 @@ def prepare(path, imgs, label, size):
         x[i] = img_array
         t[i] = label
     
-    # data argumentation -- 원래 input data set에 변형을 가해서 데이터 추가
+    # data augmentation -- 원래 train dataset에 변형을 가해서 데이터 추가
     rotated_img_index = np.random.choice(len(imgs), size - len(imgs), replace=False)    # (size-원래 이미지 수)만큼의 데이터 추가
     for i in range(size - len(imgs)):
         img = Image.open(path + imgs[rotated_img_index[i]])
