@@ -27,5 +27,6 @@ lr = str(learning_rate).replace('.', '_')
 network.save_params('epoch=' + str(epochs) + ', lr=' + lr + '.pkl')
 print("Saved Network Parameters!")
 
+# 학습 소요 시간 표시
 t = time.time() - start
 print("elapsed time : {0}h {1}m {2}s".format(int(t // 3600), int(t % 3600 // 60), int(t % 3600 % 60)))

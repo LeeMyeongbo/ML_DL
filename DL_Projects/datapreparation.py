@@ -20,12 +20,12 @@ test_mpath = 'SCDataset/test/malignant/'
 
 
 def prepare(path, imgs, label, size):
-    x = np.empty(shape=(size, 3, 224, 224))
-    t = np.empty(shape=(size,)).astype(int)
+    x = np.empty(shape=(size, 3, 224, 224))                 # 이미지 데이터 저장용 배열
+    t = np.empty(shape=(size,)).astype(int)                 # 정답 레이블 (실수형이 아닌 정수형으로 지정)
     
     for i in range(len(imgs)):
-        img = Image.open(path + imgs[i])
-        img_array = np.array(img).transpose((2,0,1))
+        img = Image.open(path + imgs[i])                    # 경로 내 이미지 파일 오픈
+        img_array = np.array(img).transpose((2,0,1))        # (세로픽셀수*가로픽셀수*채널) -> (채널*세로픽셀수*가로픽셀수)로 축 변환
         x[i] = img_array
         t[i] = label
     
@@ -45,20 +45,20 @@ def prepare(path, imgs, label, size):
 
 
 def load_data():
-    if not os.path.exists('SCDataset'):
+    if not os.path.exists('SCDataset'):                     # 데이터가 없다면 다운로드
         urlretrieve('https://media.githubusercontent.com/media/LeeMyeongbo/Datasets/main/SCDataset.zip', 'SCDataset.zip')
         with ZipFile('SCDataset.zip', 'r') as z:
             z.printdir()
-            z.extractall()
+            z.extractall()                                  # 즉시 압축 풀기
     
-    train_bimgs = os.listdir(train_bpath)
-    train_mimgs = os.listdir(train_mpath)
-    test_bimgs = os.listdir(test_bpath)
-    test_mimgs = os.listdir(test_mpath)
+    train_bimgs = os.listdir(train_bpath)                   # train 폴더 내 benign에 있는 이미지 파일 리스트
+    train_mimgs = os.listdir(train_mpath)                   # train 폴더 내 malignant에 있는 이미지 파일 리스트
+    test_bimgs = os.listdir(test_bpath)                     # test 폴더 내 benign에 있는 이미지 파일 리스트
+    test_mimgs = os.listdir(test_mpath)                     # test 폴더 내 malignant에 있는 이미지 파일 리스트
     
-    (x_btrain, t_btrain) = prepare(train_bpath, train_bimgs, 0, 450)
-    (x_mtrain, t_mtrain) = prepare(train_mpath, train_mimgs, 1, 450)
-    (x_btest, t_btest) = prepare(test_bpath, test_bimgs, 0, len(test_bimgs))
+    (x_btrain, t_btrain) = prepare(train_bpath, train_bimgs, 0, 450)            # benign은 0으로 labeling
+    (x_mtrain, t_mtrain) = prepare(train_mpath, train_mimgs, 1, 450)            # malignant는 1로 labeling
+    (x_btest, t_btest) = prepare(test_bpath, test_bimgs, 0, len(test_bimgs))    # test dataset도 마찬가지로 적용
     (x_mtest, t_mtest) = prepare(test_mpath, test_mimgs, 1, len(test_mimgs))
     
     x_train = np.concatenate((x_btrain, x_mtrain), axis=0)
