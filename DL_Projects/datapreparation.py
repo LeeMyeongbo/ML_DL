@@ -41,7 +41,7 @@ def prepare(path, imgs, label, size):
         x[len(imgs) + i] = img_array
         t[len(imgs) + i] = label
         
-    x /= 255.0
+    x /= 255.0                                              # 0 ~ 255 의 값을 0 ~ 1로 변환
     return (x, t)
 
 
