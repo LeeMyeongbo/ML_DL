@@ -1,4 +1,5 @@
 # 폴더 제외
+.idea
 __pycache__/
 SCDataset/
 
