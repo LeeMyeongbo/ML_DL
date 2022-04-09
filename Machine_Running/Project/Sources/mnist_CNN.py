@@ -1,5 +1,5 @@
 import tensorflow as tf
-from keras import layers, models
+from tensorflow.keras import layers, models
 
 # 데이터 생성 및 전처리
 (train_images, train_labels), (test_images, test_labels) = tf.keras.datasets.mnist.load_data()

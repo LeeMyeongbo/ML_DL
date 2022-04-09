@@ -28,7 +28,7 @@ def Set_Neural_Network_Model():
     model.add(tf.keras.layers.Dense(256, activation='relu'))
     model.add(tf.keras.layers.Dense(num_classes, activation='relu'))
     model.summary()
-    sgd = tf.keras.optimizers.SGD(lr=0.01)
+    sgd = tf.keras.optimizers.SGD(lr=0.005)
 
     # 손실 함수를 제곱 오차 함수로 설정하고 학습 알고리즘은 SGD 방식으로 한다.
     model.compile(loss='mean_squared_error', optimizer=sgd, metrics=['accuracy'])
