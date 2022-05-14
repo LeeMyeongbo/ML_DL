@@ -1,5 +1,6 @@
+import gzip
+import os.path
 import urllib.request as req
-import gzip, os, os.path
 
 savepath = 'C:/Users/Administrator/PycharmProjects/day08/handwritings'
 baseurl = 'http://yann.lecun.com/exdb/mnist/'

@@ -7,7 +7,9 @@ OS: Ubuntu 18.10
 Python version: 3.8.12
 """
 
-import sys, os
+import os
+import sys
+
 sys.path.append(os.pardir)  # 부모 디렉터리의 파일을 가져올 수 있도록 설정
 import time                 # 실행시간 측정
 from common.deep_convnet import DeepConvNet

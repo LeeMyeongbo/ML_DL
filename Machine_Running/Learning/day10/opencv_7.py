@@ -1,8 +1,9 @@
 from sklearn.model_selection import train_test_split
-from sklearn import datasets, svm, metrics
+from sklearn import datasets, svm
 from sklearn.metrics import accuracy_score
 import cv2
-from sklearn.externals import joblib
+import joblib
+
 
 def predict_digit(filename):
     _clf = joblib.load("digits.pkl")  # 학습한 데이터 읽어 들이기
@@ -13,6 +14,7 @@ def predict_digit(filename):
     my_img = my_img.reshape((-1, 64))
     res = _clf.predict(my_img)
     return res[0]
+
 
 # 데이터 읽기
 digits = datasets.load_digits()

@@ -1,4 +1,5 @@
-import csv, codecs
+import codecs
+import csv
 
 # csv 파일 생성
 # encoding = euc_kr, utf-8
